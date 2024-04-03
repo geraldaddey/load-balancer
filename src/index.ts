@@ -48,3 +48,28 @@ setInterval( () => {
     })
     
 }, 10000)
+
+
+// Using Round Robin Algorithm
+function getNextServer(){ 
+    if (healthyServers.length === 0) return null
+    
+    const server = healthyServers[currentServer % healthyServers.length]
+    currentServer = (currentServer + 1) % healthyServers.length
+    return server
+}
+
+
+const server = http.createServer((req, res) => {
+const next = getNextServer() 
+
+if (next){ 
+    proxy.web(req, res, {target: next})
+} else { 
+    res.writeHead(502) //Bad Gateway
+    res.end("No healthy server to handle the request")
+}
+})
+
+console.log('Load Balancer is running on port 3000')
+server.listen( 3000 )
