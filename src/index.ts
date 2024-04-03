@@ -31,3 +31,20 @@ function checkServerHealth(server: string) {
             })
     })
 }
+
+async function healthChecks(){ 
+    const status  = await Promise.all(allServers.map(checkServerHealth))
+    healthyServers = allServers.filter((_, index) => status[index])
+}
+
+// health check every 10 seconds
+setInterval( () => { 
+    healthChecks()
+    .then(() => {
+     console.log("Operation: Health Check \n Healthy Servers: ", healthyServers)   
+    })
+    .catch ((err) => { 
+        console.log("Operation: Health Check \n Status: Failed", err);
+    })
+    
+}, 10000)
