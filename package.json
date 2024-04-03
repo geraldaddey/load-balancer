@@ -1,5 +1,5 @@
 {
-  "name": "load_balancer",
+  "name": "load-balancer",
   "version": "1.0.0",
   "description": "Implementing a Load Balancer in TypeScript",
   "main": "index.js",
@@ -8,7 +8,8 @@
     "load-balancer": "nodemon --watch 'src/**/*' -e ts --exec 'ts-node src/load_balancer.ts'",
     "first-server": "nodemon --watch 'src/**/*' -e ts --exec 'ts-node src/server1.ts'",
     "second-server": "nodemon --watch 'src/**/*' -e ts --exec 'ts-node src/server2.ts'",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "eslint src --ext .ts"
   },
   "keywords": [],
   "author": "Gerald Kweku Addey",
@@ -16,10 +17,11 @@
   "devDependencies": {
     "@types/http-proxy": "^1.17.14",
     "@types/node": "^20.10.5",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "eslint": "^8.55.0",
-    "eslint-plugin-import": "^2.29.0",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-typescript": "^0.14.0",
     "nodemon": "^3.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
